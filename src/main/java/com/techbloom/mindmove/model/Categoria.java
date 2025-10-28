@@ -1,9 +1,16 @@
 package com.techbloom.mindmove.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -23,9 +30,14 @@ public class Categoria {
     @Size(max = 5000, message = "O link do ícone deve ter no máximo 5000 caracteres")
     private String icone;
 
-    @NotBlank(message = "O perfil recomendado é obrigatório!")
+    @NotBlank(message = "O perfil relacionado é obrigatório!")
     private String perfilRelacionado; // Ex: TDAH, Autismo, Ansiedade, TOD, etc.
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("categoria")
+    private List<Exercicio> exercicios;
+
+    
     public Categoria() {}
 
 	public Long getId() {
@@ -60,4 +72,13 @@ public class Categoria {
 		this.perfilRelacionado = perfilRelacionado;
 	}
 
+	public List<Exercicio> getExercicios() {
+		return exercicios;
+	}
+
+	public void setExercicios(List<Exercicio> exercicios) {
+		this.exercicios = exercicios;
+	}
+	
+	
 }
