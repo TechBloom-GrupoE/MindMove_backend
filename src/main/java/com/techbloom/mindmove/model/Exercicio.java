@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -28,10 +29,10 @@ public class Exercicio {
     private String descricao;
 	
     @Min(value = 1, message = "A duração mínima deve ser de 1 minuto.")
-	@NotBlank(message = "A Duração é Obrigatória!")
+	@NotNull(message = "A Duração é Obrigatória!")
 	private Integer duracao;
 	
-	@Pattern(regexp = "Baixo|Médio|Alto", message = "O nível de estímulo sensorial deve ser Baixo, Médio ou Alto.")
+	@Pattern(regexp = "(?i)Baixo|M[eé]dio|Alto",message = "O nível de estímulo sensorial deve ser Baixo, Médio ou Alto.")
 	@NotBlank(message = "O Estímulo Sensorial é Obrigatório!")
 	private String estimuloSensorial;
 
