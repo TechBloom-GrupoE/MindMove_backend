@@ -11,9 +11,11 @@ public class UsuarioLogin {
 	private LocalDate data_nasc;
 	private BigDecimal altura;
 	private BigDecimal peso;
+	private String perfil;
 	private String senha;
 	private String foto;
 	private String token;
+	
 	public Long getId() {
 		return id;
 	}
@@ -50,6 +52,12 @@ public class UsuarioLogin {
 	public void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
+	public String getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
 	public String getSenha() {
 		return senha;
 	}
@@ -68,7 +76,5 @@ public class UsuarioLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-	
 	
 }

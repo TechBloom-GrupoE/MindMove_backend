@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -31,7 +32,7 @@ public class Usuario {
 	@NotBlank(message = "O Atributo Usuario (email) é obrigatório!")
 	private String usuario;
 	
-	@NotBlank(message = "O Atributo Data de Nascimento é obrigatório!")
+	@NotNull(message = "O Atributo Data de Nascimento é obrigatório!")
 	private LocalDate data_nasc;
 	
 	@DecimalMin(value = "0.0", inclusive = false, message = "O Atributo Altura deve ser positivo e maior do que zero")
@@ -39,6 +40,9 @@ public class Usuario {
 	
 	@DecimalMin(value = "0.0", inclusive = false, message = "O Atributo Peso deve ser positivo e maior do que zero")
 	private BigDecimal peso;
+	
+	@NotBlank(message = "O Atributo Perfil Neurodivergente é obrigatório!")
+	private String perfil;
 	
 	@NotBlank(message = "O Atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
@@ -109,6 +113,14 @@ public class Usuario {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
 	}
 
 	
