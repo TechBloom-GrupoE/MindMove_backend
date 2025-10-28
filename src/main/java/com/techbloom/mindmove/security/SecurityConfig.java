@@ -40,27 +40,27 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
-//    @Bean
-//    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        return http
-//            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//            .csrf(csrf -> csrf.disable())
-//            .cors(cors -> {})
-//            
-//            .authorizeHttpRequests(auth -> auth
-//                .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
-//                .requestMatchers(HttpMethod.OPTIONS).permitAll()
-//                .anyRequest().authenticated()
-//            )
-//            
-//            .exceptionHandling(exceptions -> exceptions
-//                    .authenticationEntryPoint((request, response, authException) -> 
-//                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, 
-//                            "Não autorizado - Token JWT ausente ou inválido"))
-//            )
-//            
-////            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-////            .build();
-//    }
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .csrf(csrf -> csrf.disable())
+            .cors(cors -> {})
+            
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
+                .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                .anyRequest().authenticated()
+            )
+            
+            .exceptionHandling(exceptions -> exceptions
+                    .authenticationEntryPoint((request, response, authException) -> 
+                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, 
+                            "Não autorizado - Token JWT ausente ou inválido"))
+            )
+            
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+            .build();
+    }
     
 }
