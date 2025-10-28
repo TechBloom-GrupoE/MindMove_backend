@@ -40,6 +40,9 @@ public class Usuario {
 	@DecimalMin(value = "0.0", inclusive = false, message = "O Atributo Peso deve ser positivo e maior do que zero")
 	private BigDecimal peso;
 	
+	@NotBlank(message = "O Atributo Perfil Neurodivergente é obrigatório!")
+	private String perfil;
+	
 	@NotBlank(message = "O Atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
 	private String senha;
