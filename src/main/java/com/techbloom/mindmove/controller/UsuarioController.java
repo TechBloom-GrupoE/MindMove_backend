@@ -1,6 +1,8 @@
 package com.techbloom.mindmove.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
 	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> getAll(){
 		return ResponseEntity.ok(usuarioService.getAll());
@@ -60,5 +62,19 @@ public class UsuarioController {
 		return usuarioService.autenticarUsuario(usuarioLogin)
 				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+	
+	@PostMapping("/calcular-imc/{id}")
+	public ResponseEntity<Map<String, Object>> calcularIMC(@PathVariable Long id) {
+		 try {
+		        double imc = usuarioService.calcularIMC(id);
+		        String interpretacao = usuarioService.interpretarIMC(imc);
+		        Map<String, Object> response = new HashMap<>();
+		        response.put("imc", imc);
+		        response.put("interpretacao", interpretacao);
+		        return ResponseEntity.ok(response);
+		    } catch (Exception e) {
+		        return ResponseEntity.badRequest().body(Map.of("erro", e.getMessage()));
+		    }
 	}
 }
