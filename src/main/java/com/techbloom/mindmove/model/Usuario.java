@@ -2,6 +2,7 @@ package com.techbloom.mindmove.model;
 
 import java.time.LocalDate;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +28,7 @@ public class Usuario {
 	@NotBlank(message = "O Atributo Nome é obrigatório!")
 	private String nome;
 	
+	@Schema(example = "email@email.com.br")
 	@Email(message = "Deve ser inserido um endereço de e-mail válido!")
 	@NotBlank(message = "O Atributo Usuario (email) é obrigatório!")
 	private String usuario;
