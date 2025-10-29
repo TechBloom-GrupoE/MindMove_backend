@@ -68,4 +68,5 @@ public class ExercicioController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         exercicioRepository.deleteById(id);
     }
+  
 }
