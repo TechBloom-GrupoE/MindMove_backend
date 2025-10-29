@@ -89,6 +89,27 @@ public class UsuarioService {
 		
 	}
 	
+	public double calcularIMC(Long usuarioId) {
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        Double altura = usuario.getAltura();
+        Double peso = usuario.getPeso();
+        if (altura <= 0 || peso <= 0) {
+            throw new IllegalArgumentException("Altura e peso devem ser valores positivos.");
+        }
+        Double imc = peso / (altura * altura);
+        usuarioRepository.save(usuario);
+        return Math.round(imc);
+    }
+	
+    public String interpretarIMC(double imc) {
+        if (imc < 18.5) return "Abaixo do peso";
+        if (imc < 25) return "Peso normal";
+        if (imc < 30) return "Sobrepeso";
+        return "Obesidade";
+    }
+
+	
 	 private UsuarioLogin construirRespostaLogin(UsuarioLogin usuarioLogin, Usuario usuario) {
 		 usuarioLogin.setId(usuario.getId());
 		 usuarioLogin.setNome(usuario.getNome());

@@ -1,6 +1,5 @@
 package com.techbloom.mindmove.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
@@ -12,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -31,14 +31,14 @@ public class Usuario {
 	@NotBlank(message = "O Atributo Usuario (email) é obrigatório!")
 	private String usuario;
 	
-	@NotBlank(message = "O Atributo Data de Nascimento é obrigatório!")
+	@NotNull(message = "O Atributo Data de Nascimento é obrigatório!")
 	private LocalDate data_nasc;
 	
 	@DecimalMin(value = "0.0", inclusive = false, message = "O Atributo Altura deve ser positivo e maior do que zero")
-	private BigDecimal altura;
+	private Double altura;
 	
 	@DecimalMin(value = "0.0", inclusive = false, message = "O Atributo Peso deve ser positivo e maior do que zero")
-	private BigDecimal peso;
+	private Double peso;
 	
 	@NotBlank(message = "O Atributo Perfil Neurodivergente é obrigatório!")
 	private String perfil;
@@ -82,19 +82,19 @@ public class Usuario {
 		this.data_nasc = data_nasc;
 	}
 
-	public BigDecimal getAltura() {
+	public Double getAltura() {
 		return altura;
 	}
 
-	public void setAltura(BigDecimal altura) {
+	public void setAltura(Double altura) {
 		this.altura = altura;
 	}
 
-	public BigDecimal getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(BigDecimal peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 
@@ -112,6 +112,14 @@ public class Usuario {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
 	}
 
 	
