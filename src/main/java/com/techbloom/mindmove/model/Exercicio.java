@@ -33,7 +33,7 @@ public class Exercicio {
     private String descricao;
 	
     @Min(value = 1, message = "A duração mínima deve ser de 1 minuto.")
-	@NotBlank(message = "A Duração é Obrigatória!")
+	@NotNull(message = "A Duração é Obrigatória!")
 	private Integer duracao;
 	
 	@Pattern(regexp = "(?i)Baixo|M[eé]dio|Alto", message = "O nível de estímulo sensorial deve ser Baixo, Médio ou Alto.")
