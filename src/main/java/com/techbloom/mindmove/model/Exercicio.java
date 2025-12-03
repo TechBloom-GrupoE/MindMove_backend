@@ -13,7 +13,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
+import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "tb_exercicios")
 public class Exercicio {
