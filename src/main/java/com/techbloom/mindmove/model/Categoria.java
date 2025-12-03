@@ -34,8 +34,8 @@ public class Categoria {
     private String perfilRelacionado; // Ex: TDAH, Autismo, Ansiedade, TOD, etc.
     
   
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "nome", cascade = CascadeType.REMOVE)
-    @JsonIgnoreProperties(value = "nome", allowSetters = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties(value = "categoria", allowSetters = true)
     private List<Exercicio> exercicio;
 
     public Categoria() {}

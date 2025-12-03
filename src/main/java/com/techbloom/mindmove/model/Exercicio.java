@@ -41,7 +41,7 @@ public class Exercicio {
 	private String estimuloSensorial;
 	
     @ManyToOne
-   	@JsonIgnoreProperties("categoria")
+   	@JsonIgnoreProperties("exercicio")
    	private Categoria categoria;
 
 	public Long getId() {
