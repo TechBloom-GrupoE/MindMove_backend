@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-
+import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "tb_exercicios")
 public class Exercicio {
@@ -46,7 +46,7 @@ public class Exercicio {
 	private String estimuloSensorial;
 	
     @ManyToOne
-   	@JsonIgnoreProperties("categoria")
+   	@JsonIgnoreProperties("exercicio")
    	private Categoria categoria;
 
 	public Long getId() {
