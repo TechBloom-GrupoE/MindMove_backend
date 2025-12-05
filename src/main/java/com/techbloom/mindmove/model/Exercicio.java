@@ -14,7 +14,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.NotNull;
+
+
 @Entity
 @Table(name = "tb_exercicios")
 public class Exercicio {
@@ -71,6 +72,14 @@ public class Exercicio {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}	
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
 	}
 
 	public Integer getDuracao() {
