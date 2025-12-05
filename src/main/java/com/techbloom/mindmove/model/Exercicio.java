@@ -11,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -32,8 +33,12 @@ public class Exercicio {
 	@NotBlank(message = "A Descrição é Obrigatória!")
     private String descricao;
 	
+	@Column(length = 250)
+    @Size(min=5, max=250, message="O link do video deve conter no mínimo 05 e no máximo 250 caracteres")
+    private String video;
+	
     @Min(value = 1, message = "A duração mínima deve ser de 1 minuto.")
-	@NotBlank(message = "A Duração é Obrigatória!")
+	@NotNull(message = "A Duração é Obrigatória!")
 	private Integer duracao;
 	
 	@Pattern(regexp = "(?i)Baixo|M[eé]dio|Alto", message = "O nível de estímulo sensorial deve ser Baixo, Médio ou Alto.")
